@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Del Sol Architecture — Miami Studio</title>
+  <meta name="description" content="Del Sol Architecture — coastal-resilient architectural design, adaptive reuse, and permitting expertise in Miami, FL." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ----------------------------
+       Base & Reset
+    -----------------------------*/
+    :root{
+      --ink:#0f172a;           /* slate-900 */
+      --ink-2:#1e293b;         /* slate-800 */
+      --ink-3:#334155;         /* slate-700 */
+      --muted:#64748b;         /* slate-500 */
+      --sky:#0284c7;           /* sky-600 */
+      --sky-2:#0ea5e9;         /* sky-500 */
+      --sun:#f59e0b;           /* amber-500 */
+      --bg:#f8fafc;            /* slate-50 */
+      --card:#ffffff;          /* white */
+      --line:#e2e8f0;          /* slate-200 */
+      --ok:#16a34a;            /* green-600 */
+      --warn:#f97316;          /* orange-500 */
+      --radius:20px;
+      --shadow:0 10px 30px rgba(2,8,23,.08);
+      --shadow-soft:0 6px 20px rgba(2,8,23,.06);
+      --shadow-hard:0 18px 60px rgba(2,8,23,.12);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    img{max-width:100%;display:block}
+    a{color:var(--sky);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .section{padding:72px 0}
+    .subhead{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      background:linear-gradient(90deg,var(--sky),var(--sun));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      margin-bottom:14px;
+    }
+    h1,h2,h3{line-height:1.2;margin:0 0 14px}
+    h1{font-size:56px}
+    h2{font-size:36px}
+    h3{font-size:22px}
+    p{margin:0 0 14px;color:var(--ink-3)}
+    ul{padding-left:18px;margin:0 0 16px}
+    /* ----------------------------
+       Header & Navigation
+    -----------------------------*/
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.82);
+      backdrop-filter:saturate(140%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px;
+      letter-spacing:.02em;
+    }
+    .brand-badge{
+      width:34px;height:34px;border-radius:12px;
+      background:conic-gradient(from 210deg at 50% 50%, var(--sun), var(--sky) 60%, var(--sun) 100%);
+      box-shadow:var(--shadow-soft);
+      border:1px solid var(--line);
+    }
+    .nav ul{display:flex;gap:18px;list-style:none;padding:0;margin:0}
+    .nav a{color:var(--ink-2);font-weight:600;padding:8px 10px;border-radius:10px}
+    .nav a:hover{background:#eef6ff;text-decoration:none}
+    .cta{
+      background:var(--ink);color:#fff;border:none;border-radius:12px;
+      padding:10px 16px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-soft)
+    }
+    .cta:hover{transform:translateY(-1px)}
+    /* ----------------------------
+       Hero (Block 1)
+    -----------------------------*/
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 400px at 80% -10%, #e0f2fe 0%, transparent 60%),
+        linear-gradient(180deg,#ffffff 0%, #f6fbff 60%, #ffffff 100%);
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;
+      min-height:72vh;
+    }
+    .hero h1{font-weight:900;letter-spacing:-.02em}
+    .hero p.lead{
+      font-size:18px;color:var(--ink-3);max-width:56ch
+    }
+    .hero-card{
+      border:1px solid var(--line);background:var(--card);
+      border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:18px;display:grid;gap:14px
+    }
+    .hero-card .row{display:flex;gap:14px;align-items:center}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#f1f5f9;color:var(--ink-2);padding:8px 12px;border-radius:999px;font-weight:700
+    }
+    .check{width:14px;height:14px;border-radius:50%;background:var(--ok)}
+    .hero-img{
+      border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-hard)
+    }
+    /* ----------------------------
+       About (Block 2)
+    -----------------------------*/
+    .about{background:#ffffff}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .about .card{
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:var(--card);padding:22px;box-shadow:var(--shadow-soft)
+    }
+    .fact-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:8px}
+    .fact{
+      background:#f8fafc;border:1px dashed var(--line);padding:12px;border-radius:14px;
+      font-size:14px;color:var(--ink-2)
+    }
+    /* ----------------------------
+       Services (Block 3)
+    -----------------------------*/
+    .services{background:linear-gradient(180deg,#ffffff 0,#f8fbff 100%)}
+    .service-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px
+    }
+    .service{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+      padding:22px;box-shadow:var(--shadow-soft);display:grid;gap:10px
+    }
+    .service .icon{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg,#fef3c7,#fee2e2);
+      display:grid;place-items:center;font-weight:900;color:var(--ink)
+    }
+    /* ----------------------------
+       Photo Block A (Block 4)
+    -----------------------------*/
+    .gallery{
+      background:#ffffff;
+    }
+    .gallery-grid{
+      display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px
+    }
+    .gallery-grid img{
+      height:100%;object-fit:cover;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow-soft)
+    }
+    .caption{font-size:13px;color:var(--muted);margin-top:8px}
+    /* ----------------------------
+       Differentiators / Advantages
+       (Allowed headline variants for Block 5)
+    -----------------------------*/
+    .edge{
+      background:radial-gradient(800px 300px at -20% 0%, #e0f2fe 0%, transparent 60%), #ffffff;
+    }
+    .edge-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px
+    }
+    .edge-card{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+      padding:22px;box-shadow:var(--shadow-soft)
+    }
+    /* ----------------------------
+       Photo Block B (Block 6)
+    -----------------------------*/
+    .mosaic{
+      background:linear-gradient(180deg,#ffffff 0,#f6f6ff 60%,#ffffff 100%);
+    }
+    .mosaic-grid{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px
+    }
+    .mosaic-grid figure{
+      margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-soft)
+    }
+    .mosaic-grid img{aspect-ratio:4/3;object-fit:cover}
+    /* ----------------------------
+       Process (Block 7)
+    -----------------------------*/
+    .process{background:#ffffff}
+    .steps{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;
+      position:relative
+    }
+    .step{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+      padding:22px;box-shadow:var(--shadow-soft);position:relative
+    }
+    .step::after{
+      content:"→";position:absolute;right:-16px;top:50%;transform:translateY(-50%);
+      font-weight:900;color:var(--muted);font-size:26px
+    }
+    .step:last-child::after{display:none}
+    /* ----------------------------
+       Contact Form (Block 8)
+    -----------------------------*/
+    .contact{background:linear-gradient(180deg,#ffffff 0,#f9fbfc 100%)}
+    form{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+      background:var(--card);padding:22px;border-radius:var(--radius);
+      border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    label{font-size:13px;font-weight:700;color:var(--ink-2)}
+    input,textarea,select{
+      width:100%;padding:12px 14px;border:1px solid var(--line);
+      border-radius:12px;background:#f8fafc;color:var(--ink-2)
+    }
+    textarea{min-height:130px;resize:vertical}
+    .full{grid-column:1/-1}
+    .btn{
+      background:linear-gradient(135deg,var(--ink),#111827);
+      color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .note{font-size:12px;color:var(--muted)}
+    /* ----------------------------
+       Footer / Contacts (Block 9)
+    -----------------------------*/
+    footer{
+      background:#0b1220;color:#cbd5e1;border-top:1px solid #0b1a30;
+      padding-top:46px
+    }
+    .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}
+    .foot small{color:#94a3b8}
+    .chip{display:inline-block;background:#111827;border:1px solid #1f2937;color:#cbd5e1;padding:5px 8px;border-radius:999px;font-size:12px}
+    .copyright{
+      border-top:1px solid #1f2937;margin-top:20px;padding:14px 0;color:#94a3b8
+    }
+    /* ----------------------------
+       Utilities
+    -----------------------------*/
+    .muted{color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .badge{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;color:#0a2e1a;background:#ecfdf5;border:1px solid #bbf7d0;padding:6px 10px;border-radius:999px}
+    .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+    /* ----------------------------
+       Responsive
+    -----------------------------*/
+    @media (max-width:1030px){
+      .hero-grid,.about-grid,.service-grid,.edge-grid,.mosaic-grid,.steps,.foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:720px){
+      h1{font-size:40px}
+      h2{font-size:28px}
+      .hero-grid,.about-grid,.service-grid,.edge-grid,.mosaic-grid,.steps{grid-template-columns:1fr}
+      .nav ul{display:none}
+      form{grid-template-columns:1fr}
+      .hero-card{order:2}
+      .hero-img{order:1}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       Header & Navigation
+  ============================ -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Del Sol Architecture</span>
+      </div>
+      <ul>
+        <li><a href="#home">Overview</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#photos-a">Projects</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="cta" href="mailto:info@delsolarchitecture.info">Email Us</a>
+    </div>
+  </header>
+
+  <!-- ===========================
+       Block 1 — Hero / Main Screen
+       Title + Expanded Subtitle
+  ============================ -->
+  <section id="home" class="hero section">
+    <div class="container hero-grid">
+
+      <div>
+        <span class="subhead">Coastal-Resilient Architecture</span>
+        <h1>Spaces that Honor Miami’s Light, Water, and Community</h1>
+        <p class="lead">
+          We are a design-led studio crafting adaptive, code-smart buildings for South Florida’s climate.
+          From waterfront custom homes to neighborhood mixed-use and hospitality, we unite beauty with
+          FEMA, Miami-Dade, and Florida Building Code compliance—so projects move smoothly from
+          concept to certificate of occupancy.
+        </p>
+
+        <div class="hero-card" aria-label="Quick highlights">
+          <div class="row">
+            <span class="pill"><span class="check"></span> 40/50-Year Recertification Ready</span>
+            <span class="pill"><span class="check"></span> Hurricane & Flood Mitigation</span>
+          </div>
+          <div class="row">
+            <span class="pill"><span class="check"></span> BIM/Revit Coordination</span>
+            <span class="pill"><span class="check"></span> Fast-Track Permitting Support</span>
+          </div>
+          <p class="muted">Licensed in Florida • Miami-Dade & Beach permitting experience • Local consultant network</p>
+          <div class="row">
+            <a class="btn" href="#contact" aria-label="Jump to contact form">Start Your Project</a>
+            <span class="badge" title="Average approvals in our last cycle">
+              <span class="dot"></span> Median Plan Review: 23 business days
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-img" aria-hidden="true">
+        <img src="https://i.pinimg.com/736x/1d/11/40/1d11407f66b26ac16670af963a3f1d74.jpg" alt="Contemporary Miami waterfront residence with warm light at dusk." />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 2 — About Us
+       5–6 specific sentences
+  ============================ -->
+  <section id="about" class="about section">
+    <div class="container about-grid">
+      <div>
+        <span class="subhead">Who We Are</span>
+        <h2>Studio, Street-Level</h2>
+        <p>
+          Del Sol Architecture is a Miami-based practice focused on climate-forward design and pragmatic delivery.
+          Our team blends boutique attention with big-project discipline: clear drawings, proactive code review,
+          and early coordination with structural, MEP, and civil teams. We use Revit from day one to reduce RFIs
+          and align the model with energy, glazing, and wind-load strategies relevant to South Florida.
+        </p>
+        <p>
+          We have hands-on experience with FEMA floodplain requirements, Miami-Dade HVHZ product approvals, and
+          seawall/king-tide conditions along Biscayne Bay. Whether it’s an adaptive reuse in Little River,
+          a mid-rise on the mainland, or a careful intervention in a historic Art Deco shell, we design
+          for longevity, constructability, and the neighborhood’s public realm.
+        </p>
+
+        <div class="fact-list" role="list">
+          <div class="fact" role="listitem">Registered Architect — State of Florida</div>
+          <div class="fact" role="listitem">Miami-Dade & City of Miami online permitting fluency</div>
+          <div class="fact" role="listitem">Typical Schematic → Permit set in 10–16 weeks</div>
+          <div class="fact" role="listitem">Trusted local partners for surveying, geotech, & landscape</div>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Studio snapshot">
+        <h3>At a Glance</h3>
+        <p><strong>Founded:</strong> 2014 • <strong>Team:</strong> 6 architects & designers • <strong>BIM:</strong> Autodesk Revit</p>
+        <p><strong>Focus:</strong> Custom residential, mixed-use, boutique hospitality, and tenant improvements.</p>
+        <p><strong>Approach:</strong> Context-driven architecture that pairs passive strategies with durable materials for
+        salt-air environments—high-performance glazing, uplift-aware roof assemblies, and shaded outdoor rooms.</p>
+        <p class="caption">Registered address: 1079 NE 90th St, Miami, FL 33138 • <a href="#contact">See full contacts</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 3 — Services (3 items)
+       Each with 3 sentences
+  ============================ -->
+  <section id="services" class="services section">
+    <div class="container">
+      <span class="subhead">What We Do</span>
+      <h2>Services Built for South Florida Projects</h2>
+
+      <div class="service-grid" role="list">
+        <article class="service" role="listitem">
+          <div class="icon" aria-hidden="true">A1</div>
+          <h3>Custom Homes & Coastal Renovations</h3>
+          <p>
+            We design waterfront and near-shore residences that balance view corridors, privacy, and storm resilience.
+            Our permit sets integrate FEMA elevation data, flood vents, and breakaway construction where applicable.
+            Expect detailed window/door schedules with Miami-Dade HVHZ approvals and uplift-checked roof systems.
+          </p>
+        </article>
+
+        <article class="service" role="listitem">
+          <div class="icon" aria-hidden="true">A2</div>
+          <h3>Adaptive Reuse & Mixed-Use</h3>
+          <p>
+            From warehouse conversions to pedestrian-friendly infill, we turn existing shells into viable, energy-aware assets.
+            We coordinate change-of-use requirements, egress paths, accessibility upgrades, and parking reductions with zoning staff.
+            Our BIM models aid daylighting studies and façade retrofits that respect the district’s character.
+          </p>
+        </article>
+
+        <article class="service" role="listitem">
+          <div class="icon" aria-hidden="true">A3</div>
+          <h3>Permitting & Recertification Support</h3>
+          <p>
+            We prepare responsive drawing packages and manage comments through iBuild and CSS portals.
+            For 40/50-Year Recertification, we collaborate with structural engineers to document repairs and create clear phasing.
+            Owners receive a punch-list-ready set that accelerates approvals and reduces change orders.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 4 — Photo Section A
+       (Projects sneak peek)
+  ============================ -->
+  <section id="photos-a" class="gallery section" aria-labelledby="gal-title">
+    <div class="container">
+      <span class="subhead">Built & In Progress</span>
+      <h2 id="gal-title">A Few Glimpses of the Work</h2>
+      <p class="muted">Every image below represents a study in shade, airflow, and material life near salt water.</p>
+
+      <div class="gallery-grid" style="margin-top:16px">
+        <figure>
+          <img src="https://i.pinimg.com/736x/52/12/91/52129105d63839ddde483cb626886d2b.jpg" alt="Shaded terrace overlooking the bay with timber soffits." />
+          <figcaption class="caption"></figcaption>
+        </figure>
+        <figure>
+          <img src="https://i.pinimg.com/736x/6d/7a/b3/6d7ab360df4d24251971c35d65d46ca3.jpg" alt="Adaptive reuse interior with natural light and concrete textures." />
+          <figcaption class="caption"></figcaption>
+        </figure>
+        <figure>
+          <img src="https://i.pinimg.com/1200x/d4/b4/9c/d4b49c232e12e5789f979ecb32566e6b.jpg" alt="Modern façade with perforated screens and tropical planting." />
+          <figcaption class="caption"></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 5 — Advantages / Why Us
+       (Choose any of the allowed variants)
+  ============================ -->
+  <section class="edge section" aria-labelledby="edge-title">
+    <div class="container">
+      <span class="subhead">Why Choose Us</span>
+      <h2 id="edge-title">What Sets Del Sol Apart</h2>
+      <p class="muted">Three edges that consistently de-risk delivery and uplift the final place.</p>
+
+      <div class="edge-grid" role="list" style="margin-top:16px">
+        <div class="edge-card" role="listitem">
+          <h3>Code-Smart from Concept</h3>
+          <p>
+            We front-load compliance—wind pressures, flood elevations, egress, accessibility—so design intent
+            survives review cycles. Our early dialogs with municipal reviewers reduce surprises,
+            keeping budgets and schedules intact.
+          </p>
+        </div>
+
+        <div class="edge-card" role="listitem">
+          <h3>Constructability in the Details</h3>
+          <p>
+            Drawings show how assemblies actually meet: corrosion-resistant fasteners, sill pan details,
+            and vapor-open wall sections for humid climates. Contractors get clarity; owners get fewer change orders.
+          </p>
+        </div>
+
+        <div class="edge-card" role="listitem">
+          <h3>Neighborhood-First Design</h3>
+          <p>
+            Miami’s streets and breezeways matter. We prioritize shade trees, stoops, and ground-floor transparency—
+            small moves that create safer, more walkable blocks and resilient communities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 6 — Photo Section B
+       (Second visual variety block)
+  ============================ -->
+  <section class="mosaic section" aria-labelledby="mosaic-title">
+    <div class="container">
+      <span class="subhead">Material & Light</span>
+      <h2 id="mosaic-title">Studies from the Desk and Field</h2>
+      <div class="mosaic-grid" style="margin-top:16px">
+        <figure>
+          <img src="https://i.pinimg.com/736x/2e/98/c2/2e98c2925d80d5624675e50fce39c08c.jpg" alt="Sunlit stairwell with white plaster and timber handrail." />
+        </figure>
+        <figure>
+          <img src="https://i.pinimg.com/1200x/89/85/7a/89857a2eac97d023f1d173abd993c5b1.jpg" alt="Concrete frame with tropical landscape in background." />
+        </figure>
+        <figure>
+          <img src="https://i.pinimg.com/1200x/69/9f/cf/699fcf160fc32ed55b3982a22116941e.jpg" alt="Perforated metal screen casting patterned light." />
+        </figure>
+        <figure>
+          <img src="https://i.pinimg.com/736x/6d/d7/59/6dd759707ab5ad1247c1923133beefae.jpg" alt="Evening exterior with warm interior glow." />
+        </figure>
+      </div>
+      <p class="caption">We test how materials weather near salt air—selecting finishes that patina with grace rather than fail.</p>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 7 — Process / How We Work
+       (3 stages with concise descriptions)
+  ============================ -->
+  <section id="process" class="process section" aria-labelledby="process-title">
+    <div class="container">
+      <span class="subhead">How We Work</span>
+      <h2 id="process-title">A Three-Stage, No-Drama Path</h2>
+
+      <div class="steps" role="list" style="margin-top:16px">
+        <div class="step" role="listitem">
+          <h3>01 — Discovery & Feasibility</h3>
+          <p>
+            We map zoning, setbacks, FAR, flood zones, and utilities, then align your program and budget.
+            Rapid Revit massing + sunlight/wind notes help select the right strategy before committing to design hours.
+          </p>
+        </div>
+
+        <div class="step" role="listitem">
+          <h3>02 — Design & Coordination</h3>
+          <p>
+            Schematic options become a coordinated BIM model. We host consultant workshops,
+            run code and accessibility checks, and preview finishes and assemblies that suit coastal exposure.
+          </p>
+        </div>
+
+        <div class="step" role="listitem">
+          <h3>03 — Permitting & Delivery</h3>
+          <p>
+            We assemble a precise permit set, respond to reviewer comments, and stay engaged through bidding and CA.
+            Expect punch-list-ready documentation and quick turnarounds during construction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 8 — Contact Form
+       (with friendly phrases)
+  ============================ -->
+  <section id="contact" class="contact section" aria-labelledby="contact-title">
+    <div class="container">
+      <span class="subhead">Let’s Talk</span>
+      <h2 id="contact-title">Tell Us About Your Site, Timeline, and Vision</h2>
+      <p class="muted">Prefer email? Write to <a href="mailto:info@delsolarchitecture.info">info@delsolarchitecture.info</a> and we’ll reply quickly.</p>
+
+      <form action="#" method="post" novalidate aria-label="Project inquiry form">
+        <div class="full">
+          <label for="intent">How we can help</label>
+          <select id="intent" name="intent" aria-label="Project intent">
+            <option>Custom Home / Renovation</option>
+            <option>Mixed-Use / Commercial</option>
+            <option>Adaptive Reuse</option>
+            <option>40/50-Year Recertification</option>
+            <option>Other — please describe below</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" />
+        </div>
+
+        <div>
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" placeholder="+1 (___) ___-____" />
+        </div>
+
+        <div>
+          <label for="address">Project address or neighborhood</label>
+          <input id="address" name="address" type="text" placeholder="e.g., Upper Eastside, Coconut Grove, Miami Beach" />
+        </div>
+
+        <div class="full">
+          <label for="timing">Target timing</label>
+          <input id="timing" name="timing" type="text" placeholder="e.g., Start design in September, break ground in Q2" />
+        </div>
+
+        <div class="full">
+          <label for="message">Notes and goals</label>
+          <textarea id="message" name="message" placeholder="Tell us about the site, constraints, must-haves, and your design style."></textarea>
+        </div>
+
+        <div class="full">
+          <button class="btn" type="submit">Send Inquiry</button>
+          <p class="note">
+            By sending this form you agree to be contacted about your project. We typically respond within one business day.
+          </p>
+        </div>
+      </form>
+
+      <div style="margin-top:18px">
+        <p class="caption">
+          Helpful phrases for the form (feel free to paste): “We’re comparing elevation and flood options,”
+          “Looking for a feasibility read,” “Need drawings for permit & bidding,” “Exploring adaptive reuse with limited parking.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       Block 9 — Contacts (address + email)
+  ============================ -->
+  <footer class="foot" aria-labelledby="foot-title">
+    <div class="container">
+      <h2 id="foot-title" class="sr-only">Contact Information</h2>
+
+      <div class="foot-grid">
+        <div>
+          <div class="brand" style="margin-bottom:8px">
+            <span class="brand-badge" aria-hidden="true"></span>
+            <strong>Del Sol Architecture</strong>
+          </div>
+          <p>Studio for climate-forward buildings in Miami and the Beaches.</p>
+          <p><span class="chip">BIM/Revit</span> <span class="chip">HVHZ</span> <span class="chip">FEMA</span> <span class="chip">Permitting</span></p>
+          <small>We meet clients on site across Miami-Dade and Broward.</small>
+        </div>
+
+        <div>
+          <h3>Address</h3>
+          <p>1079 NE 90th St<br/>Miami, FL 33138, United States</p>
+          <p><strong>Email:</strong> <a href="mailto:info@delsolarchitecture.info">info@delsolarchitecture.info</a></p>
+        </div>
+
+        <div>
+          <h3>Hours</h3>
+          <p>Mon–Fri · 9:00–6:00</p>
+          <p>Consultations by appointment</p>
+          <p class="muted">License & insurance certificates available upon request.</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <small>© <script>document.write(new Date().getFullYear())</script> Del Sol Architecture. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       Small, optional UX script
+       (client-side only; no external calls)
+  ============================ -->
+  <script>
+    // Lightweight client-side form guard (no network calls)
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        const email = document.getElementById('email');
+        const name = document.getElementById('name');
+        if (!email.value || !email.value.includes('@') || !name.value) {
+          e.preventDefault();
+          alert('Please add your name and a valid email so we can reach you. Thanks!');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+https
